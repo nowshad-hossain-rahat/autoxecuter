@@ -1,9 +1,9 @@
 # autoxecuter
 This script will continously be executing any program file whenever the content of the source file will be changed.
 ```bash
-cd autoxecuter
+[username@host]$ cd autoxecuter
 
-./run
+[username@host]$ ./run
 
 [#]-> Welcome to Auto Executer!
 [#]-> Author : Nowshad Hossain Rahat
