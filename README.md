@@ -25,11 +25,13 @@ This script will continously be executing any program file whenever the content 
   [4]-> Perl
   [5]-> TypeScript
   [6]-> C++ (GCC)
+  [7]-> Bash
 [#]-> Enter the ID : 6
 [#]-> File name : main.cpp
 [#]-> Execution started...
-C++
 ```
+
+Now just write code to that file and whenever you'll save it the Auto Executer will detect that and execute that file. Then the output will be printed into your console.
 
 * Press ```Ctrl + C``` to stop
 ```bash

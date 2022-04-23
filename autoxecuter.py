@@ -1,6 +1,7 @@
 from genericpath import exists
 from signal import SIGINT, signal
 import subprocess
+import os
 
 
 # executers list
@@ -12,6 +13,7 @@ executers = (
     { 'name': 'Perl', 'command': 'perl', 'type': 'interpreter' },
     { 'name': 'TypeScript', 'command': 'tsc', 'type': 'compiler' },
     { 'name': 'C++ (GCC)', 'command': 'g++', 'type': 'compiler' },
+    { 'name': 'Bash', 'command': 'bash', 'type': 'interpreter' }
 )
 
 
@@ -22,7 +24,7 @@ def stop_auto_executer(sig, frame):
 
 
 # this will execute the python file whenever it'll find any changes into the file
-def auto_execute(executer:str, filename: str):
+def auto_execute(executer:object, filename: str):
 
     # storing the file content
     prev_content = open(filename).read()
@@ -30,7 +32,7 @@ def auto_execute(executer:str, filename: str):
     # adding event listener to the Ctrl + C event
     signal(SIGINT, stop_auto_executer)
 
-    print('[#]-> Execution started...')
+    print('[#]-> Execution started...\n')
 
     while(True):
 
@@ -38,13 +40,20 @@ def auto_execute(executer:str, filename: str):
 
         if( current_content != None and current_content != '' and current_content != prev_content ):
 
-            sp = subprocess.run([executer, filename], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if( executer['type'] == 'interpreter' ):
+                sp = subprocess.run([executer['command'], filename], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            else:
+                if( executer['command'] == 'g++' ):
 
-            if( executer == 'g++' ):
-                sp = subprocess.run(['./a.out'], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            elif( executer == 'tsc' ):
-                filename = filename[0:-2] + 'js'
-                sp = subprocess.run(['node', filename], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    cpp_output_file = f'{os.path.dirname(filename)}{os.path.sep}a.out'
+                    subprocess.run([executer['command'], filename, '-o', cpp_output_file], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    sp = subprocess.run([cpp_output_file], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+                elif( executer['command'] == 'tsc' ):
+
+                    subprocess.run([executer['command'], filename, '--outDir', os.path.dirname(filename)], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    sp = subprocess.run(['node', filename[0:-2] + 'js'], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
 
             if( sp.stdout ):
                 print(sp.stdout, end='')
@@ -77,7 +86,9 @@ if( executer_id != None and executer_id != '' and filename != '' ):
     elif( not exists(filename) ):
         print('[!]-> File does not exists!')
     else:
-        auto_execute(executers[executer_id]['command'], filename)
+        filename = os.path.abspath( filename )
+        auto_execute(executers[executer_id], filename)
+
 
 else:
     print('[!]-> Invalid Executer or Filename!')
