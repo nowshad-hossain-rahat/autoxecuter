@@ -1,5 +1,11 @@
 # autoxecuter
 This script will continously be executing any program file whenever the content of the source file will be changed.
+
+* Step 1 :
+```bash
+[username@host]$ git clone https://github.com/nowshad-hossain-rahat/autoxecuter
+```
+
 ```bash
 [username@host]$ cd autoxecuter
 
