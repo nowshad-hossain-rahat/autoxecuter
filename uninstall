@@ -1,0 +1,5 @@
+# creating the directory into the user's folder
+rm -rf $HOME/.autoxecuter
+
+# deleting the bash file
+sudo rm /usr/local/bin/autoxecuter

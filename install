@@ -1,0 +1,6 @@
+# creating the directory into the user's folder
+mkdir $HOME/.autoxecuter
+cp ./autoxecuter.py $HOME/.autoxecuter
+
+sudo cp ./shell_command /usr/local/bin/autoxecuter
+sudo chmod +x /usr/local/bin/autoxecuter

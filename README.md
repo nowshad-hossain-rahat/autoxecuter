@@ -27,7 +27,7 @@ This script will continously be executing any program file whenever the content 
   [6]-> C++ (GCC)
   [7]-> Bash
 [#]-> Enter the ID : 6
-[#]-> File name : main.cpp
+[#]-> File name : [PATH/TO/YOUR/FILE]
 [#]-> Execution started...
 ```
 
@@ -37,3 +37,26 @@ Now just write code to that file and whenever you'll save it the Auto Executer w
 ```bash
 ^C[#]-> Auto Executer stopped!
 ```
+
+# To install as a command
+If you want to install this Auto Executer as a command like you do ```node``` or ```php``` i mean if you want it to run from anywhere of your Linux system like ```autoxecuter``` then follow the steps below
+
+* To install
+```bash
+[username@host]$ ./install
+```
+* To run
+```bash
+[username@host]$ autoxecuter
+```
+
+* To uninstall
+Go into the ```autoxecuter``` folder you cloned from github
+```bash
+[username@host]$ cd autoxecuter
+```
+then
+```bash
+[username@host]$ ./uninstall
+```
+
