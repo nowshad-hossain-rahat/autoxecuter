@@ -1,8 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-setup.cfg
-src/autoxecuter_nhrDev.egg-info/PKG-INFO
-src/autoxecuter_nhrDev.egg-info/SOURCES.txt
-src/autoxecuter_nhrDev.egg-info/dependency_links.txt
-src/autoxecuter_nhrDev.egg-info/top_level.txt
