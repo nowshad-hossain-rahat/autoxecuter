@@ -31,7 +31,7 @@ This script will continously be executing any program file whenever the content 
 C++
 ```
 
-* Press Ctrl + C to stop
+* Press ```Ctrl + C``` to stop
 ```bash
 ^C[#]-> Auto Executer stopped!
 ```
