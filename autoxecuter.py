@@ -14,9 +14,6 @@ executers = (
     { 'name': 'C++ (GCC)', 'command': 'g++', 'type': 'compiler' },
 )
 
-# first time excuting or not
-is_first_time:bool = True
-
 
 # this will response to the Ctrl + C event
 def stop_auto_executer(sig, frame):
@@ -39,7 +36,7 @@ def auto_execute(executer:str, filename: str):
 
         current_content = open(filename).read()
 
-        if( ( current_content != None and current_content != '' and current_content != prev_content ) or is_first_time):
+        if( current_content != None and current_content != '' and current_content != prev_content ):
 
             sp = subprocess.run([executer, filename], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -55,8 +52,6 @@ def auto_execute(executer:str, filename: str):
                 print(sp.stderr, end='')
 
             prev_content = open(filename).read()
-
-            is_first_time = False
 
 
 print('[#]-> Welcome to Auto Executer!')

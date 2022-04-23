@@ -17,5 +17,10 @@ python autoxecuter.py
 [#]-> Enter the ID : 6
 [#]-> File name : main.cpp
 [#]-> Execution started...
+C++
+```
 
+* Press Ctrl + C to stop
+```python
+^C[#]-> Auto Executer stopped!
 ```
