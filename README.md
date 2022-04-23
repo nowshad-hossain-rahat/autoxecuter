@@ -1,7 +1,9 @@
 # autoxecuter
 This script will continously be executing any program file whenever the content of the source file will be changed.
 ```bash
-python autoxecuter.py
+cd autoxecuter
+
+./run
 
 [#]-> Welcome to Auto Executer!
 [#]-> Author : Nowshad Hossain Rahat
@@ -21,6 +23,6 @@ C++
 ```
 
 * Press Ctrl + C to stop
-```python
+```bash
 ^C[#]-> Auto Executer stopped!
 ```
