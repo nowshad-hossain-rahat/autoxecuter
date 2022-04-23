@@ -5,10 +5,13 @@ This script will continously be executing any program file whenever the content 
 ```bash
 [username@host]$ git clone https://github.com/nowshad-hossain-rahat/autoxecuter
 ```
-
+* Step 2 :
 ```bash
 [username@host]$ cd autoxecuter
+```
 
+* Step 3 :
+```bash
 [username@host]$ ./run
 
 [#]-> Welcome to Auto Executer!
