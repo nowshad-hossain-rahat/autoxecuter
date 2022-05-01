@@ -27,7 +27,9 @@ def stop_auto_executer(sig, frame):
 def auto_execute(executer:object, filename: str):
 
     # storing the file content
-    prev_content = open(filename).read()
+    file = open(filename)
+    prev_content = file.read()
+    file.close()
 
     # adding event listener to the Ctrl + C event
     signal(SIGINT, stop_auto_executer)
@@ -35,8 +37,10 @@ def auto_execute(executer:object, filename: str):
     print('[#]-> Execution started...\n')
 
     while(True):
-
-        current_content = open(filename).read()
+        
+        file = open(filename)
+        current_content = file.read()
+        file.close()
 
         if( current_content != None and current_content != '' and current_content != prev_content ):
 
@@ -61,6 +65,9 @@ def auto_execute(executer:object, filename: str):
                 print(sp.stderr, end='')
 
             prev_content = open(filename).read()
+
+    exit(0)
+
 
 
 print('[#]-> Welcome to Auto Executer!')
