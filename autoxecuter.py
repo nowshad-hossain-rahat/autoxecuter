@@ -37,7 +37,7 @@ def auto_execute(executer:object, filename: str):
     print('[#]-> Execution started...\n')
 
     while(True):
-        
+
         file = open(filename)
         current_content = file.read()
         file.close()
@@ -51,7 +51,7 @@ def auto_execute(executer:object, filename: str):
 
                     cpp_output_file = f'{os.path.dirname(filename)}{os.path.sep}a.out'
                     subprocess.run([executer['command'], filename, '-o', cpp_output_file], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    sp = subprocess.run([cpp_output_file], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    sp = subprocess.run([f"./{cpp_output_file}"], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
                 elif( executer['command'] == 'tsc' ):
 
